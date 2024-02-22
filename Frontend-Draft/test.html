@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legaid | ChatBot</title>
+</head>
+<body>
+    <script src="https://cdn.botpress.cloud/webchat/v0/inject.js"></script>
+    <script>
+        window.botpressWebChat.init({
+            // botID and clientID of bot
+            "botId": "dece3e45-da2e-41f6-ad50-516db0117854",
+            "clientId": "dece3e45-da2e-41f6-ad50-516db0117854",
+            "botName": "Legaid",
+    
+            // URL for the Botpress WebChat JavaScript file and the messaging server
+            "hostUrl": "https://cdn.botpress.cloud/webchat/v0",
+            "messagingUrl": "https://messaging.botpress.cloud",
+    
+            // Width of the WebChat container and layout to 100% (Full Screen)
+            "containerWidth": "100%25",
+            "layoutWidth": "100%25",
+    
+            // Hiding the widget and more about the icons and animations
+            "hideWidget": true,
+            "disableAnimations": false,
+            'enableConversationDeletion': true,
+            'showCloseButton': false,
+            'showConversationsButton': true,
+        });
+    
+        // Opens up the Chatbot by default
+        // This lets users start chatting with the Chatbot without needing to click any buttons or menus.
+        window.botpressWebChat.onEvent(
+            function () {
+                window.botpressWebChat.sendEvent({ type: "show" });
+            },
+            ["LIFECYCLE.LOADED"]
+        );
+    </script>
+</body>
+</html>
