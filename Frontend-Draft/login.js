@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
         
         if (emailInput.value.trim() !== '' && passwordInput.value.trim() !== '') {
             
-            window.location.href = "botUI.html"; 
+            window.location.href = "test2.html"; 
         } else {
             alert("Please fill in both email and password fields.");
         }
