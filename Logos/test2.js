@@ -40,10 +40,70 @@ const dropdownToggle = document.querySelector('.dropdown-toggle');
           dynamicContent.innerHTML = '<h3>Non Disclosure Agreement</h3><form> <div class="mb-3"> <label for="dateInput" class="form-label text-bg-dark">Date:</label> <input type="date" class="form-control text-bg-dark" id="dateInput"> </div> <!-- Disclosing Party --> <h5 class="text-bg-dark">Disclosing Party (check one):</h5> <div class="mb-3 form-check"> <input type="checkbox" class="form-check-input text-bg-dark" id="corporationCheckbox"> <label class="form-check-label text-bg-dark" for="corporationCheckbox">Corporation</label> </div> <div class="mb-3 form-check"> <input type="checkbox" class="form-check-input text-bg-dark" id="individualCheckbox"> <label class="form-check-label text-bg-dark" for="individualCheckbox">Individual</label> </div> <!-- Add other checkboxes here --> <!-- Receiving Party --> <h5 class="text-bg-dark">Receiving Party (check one):</h5> <div class="mb-3 form-check"> <input type="checkbox" class="form-check-input text-bg-dark" id="corporationReceivingCheckbox"> <label class="form-check-label text-bg-dark" for="corporationReceivingCheckbox">Corporation</label> </div> <div class="mb-3 form-check"> <input type="checkbox" class="form-check-input text-bg-dark" id="individualReceivingCheckbox"> <label class="form-check-label text-bg-dark" for="individualReceivingCheckbox">Individual</label> </div> <!-- Add other checkboxes here --> <div class="mb-3"> <label for="detailsTextarea" class="form-label text-bg-dark">Mention details for contract:</label> <textarea class="form-control text-bg-dark" id="detailsTextarea" rows="3"></textarea> </div> <button type="submit" class="btn btn-primary">Submit</button> </form>';
           break;
         case 'option5':
-          dynamicContent.innerHTML = '<h3>Power of Attorney</h3><form> <div class="mb-3"> <label for="ownerName" class="form-label">Owner Name:</label> <input type="text" class="form-control text-bg-dark" id="ownerName" placeholder="Enter owner name"> </div> <div class="mb-3"> <label for="ownerAddress" class="form-label">Owner Address:</label> <textarea class="form-control text-bg-dark" id="ownerAddress" rows="3" placeholder="Enter owner address"></textarea> </div> <div class="mb-3"> <label for="receiverName" class="form-label">Receiver Name:</label> <input type="text" class="form-control text-bg-dark" id="receiverName" placeholder="Enter receiver name"> </div> <div class="mb-3"> <label for="receiverAddress" class="form-label">Receiver Address:</label> <textarea class="form-control text-bg-dark" id="receiverAddress" rows="3" placeholder="Enter receiver address"></textarea> </div> <div class="mb-3"> <label for="successorAgentName" class="form-label">Successor Agent Name:</label> <input type="text" class="form-control text-bg-dark" id="successorAgentName" placeholder="Enter successor agent name"> </div> <div class="mb-3"> <label for="successorAgentAddress" class="form-label">Successor Agent Address:</label> <textarea class="form-control text-bg-dark" id="successorAgentAddress" rows="3" placeholder="Enter successor agent address"></textarea> </div> <div class="mb-3"> <button type="submit" class="btn btn-primary">Submit</button> </div> </form>';
+          dynamicContent.innerHTML = '<h3>Power of Attorney</h3><form id="myForm"> <div class="mb-3"> <label for="ownerName" class="form-label">Owner Name:</label> <input type="text" class="form-control text-bg-dark" id="ownerName" placeholder="Enter owner name"> </div> <div class="mb-3"> <label for="ownerAddress" class="form-label">Owner Address:</label> <textarea class="form-control text-bg-dark" id="ownerAddress" rows="3" placeholder="Enter owner address"></textarea> </div> <div class="mb-3"> <label for="receiverName" class="form-label">Receiver Name:</label> <input type="text" class="form-control text-bg-dark" id="receiverName" placeholder="Enter receiver name"> </div> <div class="mb-3"> <label for="receiverAddress" class="form-label">Receiver Address:</label> <textarea class="form-control text-bg-dark" id="receiverAddress" rows="3" placeholder="Enter receiver address"></textarea> </div> <div class="mb-3"> <label for="successorAgentName" class="form-label">Successor Agent Name:</label> <input type="text" class="form-control text-bg-dark" id="successorAgentName" placeholder="Enter successor agent name"> </div> <div class="mb-3"> <label for="successorAgentAddress" class="form-label">Successor Agent Address:</label> <textarea class="form-control text-bg-dark" id="successorAgentAddress" rows="3" placeholder="Enter successor agent address"></textarea> </div> <div class="mb-3"> <button type="submit" class="btn btn-primary" onclick="handleSubmit(event)">Submit</button> </div> </form>';
           break;
         default:
           dynamicContent.innerHTML = ''; // Clear content if no option matches
       }
     });
   });
+
+  function handleSubmit(event) {
+    // Prevent default form submission
+    event.preventDefault();
+
+    // Get form element
+    const form = document.getElementById('myForm');
+    const contract_value = document.getElementById('dropdownMenuButton').innerText;
+
+    // Create object to hold form data
+    const formData = {
+        contract_type: contract_value,
+        general_info: '',
+        prompt: ''
+    };
+
+    // Loop through form elements
+    for (let i = 0; i < form.elements.length; i++) {
+        const element = form.elements[i];
+        if (element.tagName === 'INPUT' || element.type === 'radio' || element.type === 'checkbox') {
+            // Exclude textarea with id "prompt"
+            if (element.type !== 'textarea' || element.id !== 'prompt') {
+                formData.general_info += `${element.id}: ${element.value}\n`;
+            }
+        } else if (element.tagName === 'TEXTAREA') {
+            // Handle textarea with id "prompt"
+            if (element.id === 'prompt') {
+                formData.prompt = element.value;
+            } else {
+                formData.general_info += `${element.id}: ${element.value}\n`;
+            }
+        }
+    }
+
+    // Display form data
+    console.log(formData);
+
+    // Send form data to server (POST request)
+    fetch('your_endpoint_url', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Form data successfully submitted:', data);
+        // You can handle the response from the server here
+    })
+    .catch(error => {
+        console.error('There was a problem submitting the form:', error);
+        // You can handle errors here
+    });
+}
