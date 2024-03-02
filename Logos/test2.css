@@ -23,45 +23,7 @@ body {
 iframe{
     width:100vw;
     height:100vh;
-}
-
-.lines{
-    display: flex;
-    position:fixed;
-    inset:0;
-    z-index:999;
-}
-.line{
-    width:20px;
-    height:140px;
-    margin:auto;
-    border-radius:10px;
-    background-color:transparent;
-    animation:vadharo 0.6s infinite alternate;
-}
-
-#line_2{animation-delay:0.2s;}
-#line_3{animation-delay:0.3s;}
-#line_4{animation-delay:0.4s;}
-#line_5{animation-delay:0.5s;}
-#line_6{animation-delay:0.6s;}
-#line_7{animation-delay:0.7s;}
-#line_8{animation-delay:0.8s;}
-#line_9{animation-delay:0.9s;}
-#line_10{animation-delay:0.1s;}
-#line_12{animation-delay:0.9s;}
-#line_13{animation-delay:0.8s;}
-#line_14{animation-delay:0.7s;}
-#line_15{animation-delay:0.6s;}
-#line_16{animation-delay:0.5s;}
-#line_17{animation-delay:0.4s;}
-#line_18{animation-delay:0.3s;}
-#line_19{animation-delay:0.2s;}
-#line_20{animation-delay:0.1s;}
-
-@keyframes vadharo{
-    0%{height:140px;background-color: #00B9F1;}
-    100%{height:20px;}
+    background-color: black;
 }
 
 .visible{
@@ -70,4 +32,8 @@ iframe{
 
 .hidden{
     display: none;
+}
+
+.draft{
+    margin-right:120px;
 }
