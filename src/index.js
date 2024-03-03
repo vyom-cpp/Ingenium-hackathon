@@ -113,7 +113,7 @@ function handleSubmit(event) {
         throw new Error('Network response was not ok');
       }
       response.json().then(data => {
-        const newWindow = window.open('./pdf.html')
+        const newWindow = window.open('https://vyom-cpp.github.io/Ingenium-hackathon/src/pdf.html')
         newWindow.addEventListener('DOMContentLoaded', () => {
           const newWindowDocument = newWindow.document;
           newWindowDocument.write(`<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>pdf</title> </head> <body id="body" style="background-color: white; color: black"> <div > ${data} <div>  </body> </html>`);
