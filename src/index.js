@@ -93,7 +93,7 @@ function handleSubmit(event) {
         formData.general_info += `${element.id}: ${element.value}\n`;
       }
       else if( element.type == 'radio' || element.type == 'checkbox'){
-        formData.general_info += `${element.id}: ${element.id}\n`;
+        formData.general_info += `${element.id}: ${element.textContent}\n`;
       }
     } else if (element.tagName === 'TEXTAREA') {
       // Handle textarea with id "prompt"
