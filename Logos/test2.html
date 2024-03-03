@@ -1,65 +1,54 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-  <title>Donna | ChatBot</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
-  <link rel="stylesheet" href="test2.css">
-</head>
-
-<body>
-  <div class="">
-    <a class="btn btn-secondary position-fixed top-0 end-0 mt-4 draft" data-bs-toggle="offcanvas"
-      href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-      Draft
-    </a>
-  </div>
-  <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasExample"
-    aria-labelledby="offcanvasExampleLabel">
-    <div class="offcanvas-header" style="display: none;">
-      <h5 class="offcanvas-title" id="offcanvasExampleLabel">Draft</h5>
-      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  <head>
+    <title>Donna | ChatBot</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="test2.css">
+  </head>
+  <body>
+    <div class="">
+      <a class="btn btn-secondary position-fixed top-0 end-0 mt-4 draft" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample" style="display: none;">
+        Draft
+      </a>
     </div>
-    <div class="offcanvas-body">
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-          data-bs-toggle="dropdown" aria-expanded="false">
-          Select Option
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <li class=""><a class="dropdown-item" href="#" data-option="option1" value="Employment Contract">Employment
-              Contract</a></li>
-          <li><a class="dropdown-item" href="#" data-option="option2" value="Will Format">Will Format</a></li>
-          <li><a class="dropdown-item" href="#" data-option="option3" value="Rental/Lease Agreement">Rental/Lease
-              Agreement</a></li>
-          <li><a class="dropdown-item" href="#" data-option="option4" value="Non Disclosure Agreement">Non Disclosure
-              Agreement</a></li>
-          <li><a class="dropdown-item" href="#" data-option="option5" value="Power of Attorney">Power of Attorney</a>
-          </li>
-        </ul>
+    <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Draft</h5>
+        <button type="button" class="btn-close text-bg-secondary" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
-
-      <div id="dynamicContent" class="mt-4 m-5">
-        <!-- Content will be dynamically replaced here -->
+      <div class="offcanvas-body">
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+            Select Option
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <li class=""><a class="dropdown-item" href="#" data-option="option1" value="Employment Contract">Employment Contract</a></li>
+            <li><a class="dropdown-item" href="#" data-option="option2" value="Will Format">Will Format</a></li>
+            <li><a class="dropdown-item" href="#" data-option="option3" value="Rental/Lease Agreement">Rental/Lease Agreement</a></li>
+            <li><a class="dropdown-item" href="#" data-option="option4" value="Non Disclosure Agreement">Non Disclosure Agreement</a></li>
+            <li><a class="dropdown-item" href="#" data-option="option5" value="Power of Attorney">Power of Attorney</a></li>
+          </ul>
+        </div>
+        
+        <div id="dynamicContent" class="mt-4 m-5">
+          <!-- Content will be dynamically replaced here -->
+        </div>        
+        <div class="dynamicContent"></div>
       </div>
-      <div class="dynamicContent"></div>
     </div>
-  </div>
-  <div>
-    <div class="absolute inset-4">
-      <div
-        class="center-div relative h-full w-full overflow-clip rounded-md border border-zinc-200 bg-white p-2 px-0 py-0">
-        <iframe id="content" font style="border: none;" srcdoc="<body><script src='https://cdn.botpress.cloud/webchat/v0/inject.js'></script>
-          <script>
-            window.botpressWebChat.init({
-                  'composerPlaceholder': 'Chat with LegAid',
+    <div>
+      <div class="absolute inset-4">
+        <div
+          class="center-div relative h-full w-full overflow-clip rounded-md border border-zinc-200 bg-white p-2 px-0 py-0"
+        >
+          <iframe id="content"
+            style="border: none;"
+            srcdoc="<body><script src='https://cdn.botpress.cloud/webchat/v0/inject.js'></script>
+            <script>
+              window.botpressWebChat.init({
+                  'composerPlaceholder': 'Chat with Donna!',
                   'botConversationDescription': '',
                   'botName': 'Donna',
                   'botId': 'dece3e45-da2e-41f6-ad50-516db0117854',
@@ -78,20 +67,19 @@
                   'showConversationsButton': true,
                   'enableTranscriptDownload': true,
                   'stylesheet':'https://webchat-styler-css.botpress.app/prod/code/3fcd3e4e-d5bc-4bf5-8699-14b621b3ada2/v31782/style.css'
-                });
-                window.botpressWebChat.onEvent(function () { window.botpressWebChat.sendEvent({ type: 'show' }) }, ['LIFECYCLE.LOADED']);
-              </script></body>" width="100%" height="100%"></iframe>
+              });
+            window.botpressWebChat.onEvent(function () { window.botpressWebChat.sendEvent({ type: 'show' }) }, ['LIFECYCLE.LOADED']);
+            
+            document.getElementById('content').addEventListener('load', function() {
+              document.querySelector('.draft').style.display = 'block';
+            });
+            </script></body>"
+            width="100%"
+            height="100%"
+          ></iframe>
+        </div>
       </div>
     </div>
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"></script>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
-    integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="test2.js"></script>
-</body>
-
+    <script src="test2.js"></script>
+  </body>
 </html>
