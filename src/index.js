@@ -101,7 +101,7 @@ function handleSubmit(event) {
 
   // Send form data to server (POST request)
   // fetch('http://localhost:8000/api/post_data', {
-  fetch('https://nifty-attractive-macadamia.glitch.me/api/post_data', {
+  fetch('https://tourmaline-outstanding-rifle.glitch.me/api/post_data', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
