@@ -37,3 +37,18 @@ iframe{
 .draft{
     margin-right:120px;
 }
+
+
+.parent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading{
+    display: none;
+}
+
+#sub-btn{
+    display: block;
+}
